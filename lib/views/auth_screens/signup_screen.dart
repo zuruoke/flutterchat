@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutterchat/state/auth_state.dart';
 import 'package:flutterchat/utils/enums.dart';
-import 'package:flutterchat/utils/styles.dart';
 import 'package:flutterchat/utils/validate_credentials.dart';
 import 'package:flutterchat/views/auth_screens/add_profile_pic.dart';
+import 'package:flutterchat/views/auth_screens/login_screen.dart';
 import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -88,7 +88,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   _appBar(){
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.teal,
       elevation: 0,
       leading: IconButton(
         icon: isIOS ? Icon(Icons.arrow_back_rounded, color: Colors.black, size: 30,) :
@@ -102,8 +102,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
         Padding( 
           padding: EdgeInsets.only(right: 10),
           child: TextButton(
-          child: Text("Log In", style: TextStyle(color: Colors.brown, fontSize: 18),),
-          onPressed: (){},
+          child: Text("Log In", style: TextStyle(color: Colors.blue, fontSize: 18),),
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+          },
           ),
         )
       ],
@@ -151,7 +153,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
        child: TextButton(
          onPressed: submitSignUp,
          style: TextButton.styleFrom(
-           backgroundColor: Colors.brown,
+           backgroundColor: Colors.blue,
            shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20.0),),
          ),
@@ -194,13 +196,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
       ],);
   }
-  _decoratedBorder(){
-    Size mq = MediaQuery.of(context).size;
-    return Container(
-      height: 0.20 * mq.height,
-      decoration: canvasGradient()
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -221,7 +216,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),),
               ),
               _contentScreen(),
-              _decoratedBorder()
             ],
         ),
       ),

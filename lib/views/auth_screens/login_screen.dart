@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutterchat/state/auth_state.dart';
 import 'package:flutterchat/utils/enums.dart';
-import 'package:flutterchat/utils/styles.dart';
 import 'package:flutterchat/views/homepage.dart';
 import 'package:provider/provider.dart';
 
@@ -207,13 +206,6 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ],);
   }
-  _decoratedBorder(){
-    Size mq = MediaQuery.of(context).size;
-    return Container(
-      height: 0.20 * mq.height,
-      decoration: canvasGradient(),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -234,7 +226,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),),
               ),
               _contentScreen(),
-              _decoratedBorder()
             ],
         ),
       ),
