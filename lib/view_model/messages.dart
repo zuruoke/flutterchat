@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterchat/state/auth_state.dart';
 import 'package:provider/provider.dart';
@@ -9,7 +10,7 @@ class SingleMessage extends StatelessWidget {
   final String recipientId;
   final String senderUsername;
   final String recipientUsername;
-  final DateTime timestamp;
+  final Timestamp timestamp;
   final String text;
 
   SingleMessage({
@@ -21,6 +22,20 @@ class SingleMessage extends StatelessWidget {
     required this.timestamp,
     required this.text
     });
+
+  factory SingleMessage.fromDocument(QueryDocumentSnapshot doc) {
+    return SingleMessage(
+     messageId : doc.data()['messageId'],
+     senderId : doc.data()['senderId'],
+     recipientId : doc.data()['recipientId'],
+     senderUsername : doc.data()['senderUsername'],
+     recipientUsername : doc.data()['recipientUsername'],
+     timestamp : doc.data()['timestamp'],
+     text : doc.data()['text']
+  );
+
+  }
+
 
   @override
   Widget build(BuildContext context) {

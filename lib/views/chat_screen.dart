@@ -116,17 +116,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.hasData) {
                     List<SingleMessage> allMessages = [];
-                    snapshot.data!.docs.forEach((QueryDocumentSnapshot doc) { 
-                      allMessages.add(SingleMessage(
-                        messageId: doc.data()['messageId'],
-                        senderId: doc.data()['senderId'],
-                        recipientId: doc.data()['recipientId'],
-                        senderUsername: doc.data()['senderUsername'],
-                        recipientUsername: doc.data()['recipientUsername'],
-                        timestamp: doc.data()['timestamp'].toDate(),
-                        text: doc.data()['text']
-                      ));
-                    });
+                    allMessages = snapshot.data!.docs.map((
+                      QueryDocumentSnapshot doc) => SingleMessage.fromDocument(doc)).toList();
                   return allMessages.length == 0 ? 
                   Center(
                     child: TextButton.icon(

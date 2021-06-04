@@ -15,13 +15,14 @@ class LandingPage extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                height: 0.25 * mq.height,
+                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                height: 0.20 * mq.height,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
+                  borderRadius: BorderRadius.circular(20),
                   color: Colors.teal,
                 ) ,
             child: Align(
-              child: Text("FlutterChat", style: TextStyle(fontSize: 26, color: Colors.blue, fontWeight: FontWeight.bold),),
+              child: Text("FlutterChat", style: TextStyle(fontSize: 26, color: Colors.black, fontWeight: FontWeight.bold),),
             ),
               ),
             SizedBox(height: 0.09 * mq.width,),

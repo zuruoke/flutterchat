@@ -62,7 +62,7 @@ class _UserListItemState extends State<UserListItem> {
               username: widget.username, 
               currentUsername: state.username
               )
-            )) : print('not allowed');
+            )) : print('you are not allowed to chat with yourserlf');
         },
         ),
         SizedBox(height: 15,),
